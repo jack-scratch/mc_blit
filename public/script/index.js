@@ -4,14 +4,12 @@ const vertexShaderText =
 '',
 'attribute vec3 vertPosition;',
 'attribute vec3 vertColor;',
-'varying vec3 fragColor;',
 'uniform mat4 mWorld;',
 'uniform mat4 mView;',
 'uniform mat4 mProj;',
 '',
 'void main()',
 '{',
-'  fragColor = vertColor;',
 '  gl_Position = mProj * mView * mWorld * vec4(vertPosition, 1.0);',
 '}'
 ].join('\n');
@@ -20,10 +18,9 @@ const fragmentShaderText =
 [
 'precision mediump float;',
 '',
-'varying vec3 fragColor;',
 'void main()',
 '{',
-'  gl_FragColor = vec4(fragColor, 1.0);',
+'  gl_FragColor = vec4(vec3(1.0, 0.0, 0.0), 1.0);',
 '}'
 ].join('\n');
 
@@ -42,7 +39,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 		alert('Your browser does not support WebGL');
 	}
 
-	gl.clearColor(0.75, 0.85, 0.8, 1.0);
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 	gl.enable(gl.DEPTH_TEST);
 	gl.enable(gl.CULL_FACE);
@@ -195,7 +191,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 		mat4.mul(worldMatrix, yRotationMatrix, xRotationMatrix);
 		gl.uniformMatrix4fv(matWorldUniformLocation, gl.FALSE, worldMatrix);
 
-		gl.clearColor(0.75, 0.85, 0.8, 1.0);
 		gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
 		gl.drawElements(gl.TRIANGLES, boxIndices.length, gl.UNSIGNED_SHORT, 0);
 
