@@ -49,9 +49,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 	gl.frontFace(gl.CCW);
 	gl.cullFace(gl.BACK);
 
-	//
-	// Create shaders
-	// 
 	var vertexShader = gl.createShader(gl.VERTEX_SHADER);
 	var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 
@@ -84,42 +81,33 @@ document.addEventListener("DOMContentLoaded", async function() {
 		return;
 	}
 
-	//
-	// Create buffer
-	//
 	var boxVertices = 
-	[ // X, Y, Z           R, G, B
-		// Top
+	[
 		-1.0, 1.0, -1.0,   0.5, 0.5, 0.5,
 		-1.0, 1.0, 1.0,    0.5, 0.5, 0.5,
 		1.0, 1.0, 1.0,     0.5, 0.5, 0.5,
 		1.0, 1.0, -1.0,    0.5, 0.5, 0.5,
 
-		// Left
 		-1.0, 1.0, 1.0,    0.75, 0.25, 0.5,
 		-1.0, -1.0, 1.0,   0.75, 0.25, 0.5,
 		-1.0, -1.0, -1.0,  0.75, 0.25, 0.5,
 		-1.0, 1.0, -1.0,   0.75, 0.25, 0.5,
 
-		// Right
 		1.0, 1.0, 1.0,    0.25, 0.25, 0.75,
 		1.0, -1.0, 1.0,   0.25, 0.25, 0.75,
 		1.0, -1.0, -1.0,  0.25, 0.25, 0.75,
 		1.0, 1.0, -1.0,   0.25, 0.25, 0.75,
 
-		// Front
 		1.0, 1.0, 1.0,    1.0, 0.0, 0.15,
 		1.0, -1.0, 1.0,    1.0, 0.0, 0.15,
 		-1.0, -1.0, 1.0,    1.0, 0.0, 0.15,
 		-1.0, 1.0, 1.0,    1.0, 0.0, 0.15,
 
-		// Back
 		1.0, 1.0, -1.0,    0.0, 1.0, 0.15,
 		1.0, -1.0, -1.0,    0.0, 1.0, 0.15,
 		-1.0, -1.0, -1.0,    0.0, 1.0, 0.15,
 		-1.0, 1.0, -1.0,    0.0, 1.0, 0.15,
 
-		// Bottom
 		-1.0, -1.0, -1.0,   0.5, 0.5, 1.0,
 		-1.0, -1.0, 1.0,    0.5, 0.5, 1.0,
 		1.0, -1.0, 1.0,     0.5, 0.5, 1.0,
@@ -128,27 +116,21 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 	var boxIndices =
 	[
-		// Top
 		0, 1, 2,
 		0, 2, 3,
 
-		// Left
 		5, 4, 6,
 		6, 4, 7,
 
-		// Right
 		8, 9, 10,
 		8, 10, 11,
 
-		// Front
 		13, 12, 14,
 		15, 14, 12,
 
-		// Back
 		16, 17, 18,
 		16, 18, 19,
 
-		// Bottom
 		21, 20, 22,
 		22, 20, 23
 	];
@@ -164,26 +146,25 @@ document.addEventListener("DOMContentLoaded", async function() {
 	var positionAttribLocation = gl.getAttribLocation(program, 'vertPosition');
 	var colorAttribLocation = gl.getAttribLocation(program, 'vertColor');
 	gl.vertexAttribPointer(
-		positionAttribLocation, // Attribute location
-		3, // Number of elements per attribute
-		gl.FLOAT, // Type of elements
+		positionAttribLocation,
+		3,
+		gl.FLOAT,
 		gl.FALSE,
-		6 * Float32Array.BYTES_PER_ELEMENT, // Size of an individual vertex
-		0 // Offset from the beginning of a single vertex to this attribute
+		6 * Float32Array.BYTES_PER_ELEMENT,
+		0
 	);
 	gl.vertexAttribPointer(
-		colorAttribLocation, // Attribute location
-		3, // Number of elements per attribute
-		gl.FLOAT, // Type of elements
+		colorAttribLocation,
+		3,
+		gl.FLOAT,
 		gl.FALSE,
-		6 * Float32Array.BYTES_PER_ELEMENT, // Size of an individual vertex
-		3 * Float32Array.BYTES_PER_ELEMENT // Offset from the beginning of a single vertex to this attribute
+		6 * Float32Array.BYTES_PER_ELEMENT,
+		3 * Float32Array.BYTES_PER_ELEMENT
 	);
 
 	gl.enableVertexAttribArray(positionAttribLocation);
 	gl.enableVertexAttribArray(colorAttribLocation);
 
-	// Tell OpenGL state machine which program should be active.
 	gl.useProgram(program);
 
 	var matWorldUniformLocation = gl.getUniformLocation(program, 'mWorld');
@@ -204,9 +185,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 	var xRotationMatrix = new Float32Array(16);
 	var yRotationMatrix = new Float32Array(16);
 
-	//
-	// Main render loop
-	//
 	var identityMatrix = new Float32Array(16);
 	mat4.identity(identityMatrix);
 	var angle = 0;
