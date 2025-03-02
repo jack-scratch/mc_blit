@@ -1,6 +1,7 @@
 const shadVtxText = [
 'precision mediump float;',
 '',
+'varying vec3 _pos;',
 'attribute vec3 vertPosition;',
 'attribute vec3 vertColor;',
 'uniform mat4 mWorld;',
@@ -9,16 +10,18 @@ const shadVtxText = [
 '',
 'void main()',
 '{',
+'  _pos = vec3(mProj * mView * mWorld * vec4(vertPosition, 1.0));',
 '  gl_Position = mProj * mView * mWorld * vec4(vertPosition, 1.0);',
 '}'
 ].join('\n');
 
 const shadFragText = [
 'precision mediump float;',
+'varying vec3 _pos;',
 '',
 'void main()',
 '{',
-'  gl_FragColor = vec4(vec3(1.0, 0.0, 0.0), 1.0);',
+'  gl_FragColor = vec4(_pos, 1.0);',
 '}'
 ].join('\n');
 
@@ -175,7 +178,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 		mat4.mul(world, yRotationMatrix, xRotationMatrix);
 		gl.uniformMatrix4fv(uniWorld, gl.FALSE, world);
 
-		gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
 		gl.drawElements(gl.TRIANGLES, idc.length, gl.UNSIGNED_SHORT, 0);
 
 		requestAnimationFrame(loop);
