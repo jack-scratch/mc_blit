@@ -10,7 +10,7 @@ const shadVtxText = [
 '',
 'void main()',
 '{',
-'  _pos = vec3(mProj * mView * mWorld * vec4(vertPosition, 1.0));',
+'  _pos = vertPosition;',
 '  gl_Position = mProj * mView * mWorld * vec4(vertPosition, 1.0);',
 '}'
 ].join('\n');
