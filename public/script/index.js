@@ -1,4 +1,4 @@
-var vertexShaderText = 
+const vertexShaderText = 
 [
 'precision mediump float;',
 '',
@@ -16,7 +16,7 @@ var vertexShaderText =
 '}'
 ].join('\n');
 
-var fragmentShaderText =
+const fragmentShaderText =
 [
 'precision mediump float;',
 '',
