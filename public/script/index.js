@@ -1,5 +1,4 @@
-const shadVtxText = 
-[
+const shadVtxText = [
 'precision mediump float;',
 '',
 'attribute vec3 vertPosition;',
@@ -14,8 +13,7 @@ const shadVtxText =
 '}'
 ].join('\n');
 
-const shadFragText =
-[
+const shadFragText = [
 'precision mediump float;',
 '',
 'void main()',
@@ -53,26 +51,29 @@ document.addEventListener("DOMContentLoaded", async function() {
 	gl.compileShader(shadVtx);
 	if (!gl.getShaderParameter(shadVtx, gl.COMPILE_STATUS)) {
 		console.error('ERROR compiling vertex shader!', gl.getShaderInfoLog(shadVtx));
+
 		return;
 	}
 
 	gl.compileShader(shadFrag);
 	if (!gl.getShaderParameter(shadFrag, gl.COMPILE_STATUS)) {
 		console.error('ERROR compiling fragment shader!', gl.getShaderInfoLog(shadFrag));
+
 		return;
 	}
 
-	let program = gl.createProgram();
-	gl.attachShader(program, shadVtx);
-	gl.attachShader(program, shadFrag);
-	gl.linkProgram(program);
-	if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-		console.error('ERROR linking program!', gl.getProgramInfoLog(program));
+	let prog = gl.createProgram();
+	gl.attachShader(prog, shadVtx);
+	gl.attachShader(prog, shadFrag);
+	gl.linkProgram(prog);
+	if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+		console.error('ERROR linking program!', gl.getProgramInfoLog(prog));
 		return;
 	}
-	gl.validateProgram(program);
-	if (!gl.getProgramParameter(program, gl.VALIDATE_STATUS)) {
-		console.error('ERROR validating program!', gl.getProgramInfoLog(program));
+
+	gl.validateProgram(prog);
+	if (!gl.getProgramParameter(prog, gl.VALIDATE_STATUS)) {
+		console.error('ERROR validating program!', gl.getProgramInfoLog(prog));
 		return;
 	}
 
@@ -136,19 +137,19 @@ document.addEventListener("DOMContentLoaded", async function() {
 	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
 	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(idc), gl.STATIC_DRAW);
 
-	let attrLoc = gl.getAttribLocation(program, 'vertPosition');
-	let colorAttribLocation = gl.getAttribLocation(program, 'vertColor');
+	let attrLoc = gl.getAttribLocation(prog, 'vertPosition');
+	let colorAttribLocation = gl.getAttribLocation(prog, 'vertColor');
 	gl.vertexAttribPointer(attrLoc, 3, gl.FLOAT, gl.FALSE, 6 * Float32Array.BYTES_PER_ELEMENT, 0);
 	gl.vertexAttribPointer(colorAttribLocation, 3, gl.FLOAT, gl.FALSE, 6 * Float32Array.BYTES_PER_ELEMENT, 3 * Float32Array.BYTES_PER_ELEMENT);
 
 	gl.enableVertexAttribArray(attrLoc);
 	gl.enableVertexAttribArray(colorAttribLocation);
 
-	gl.useProgram(program);
+	gl.useProgram(prog);
 
-	let uniWorld = gl.getUniformLocation(program, 'mWorld');
-	let uniView = gl.getUniformLocation(program, 'mView');
-	let uniProj = gl.getUniformLocation(program, 'mProj');
+	let uniWorld = gl.getUniformLocation(prog, 'mWorld');
+	let uniView = gl.getUniformLocation(prog, 'mView');
+	let uniProj = gl.getUniformLocation(prog, 'mProj');
 
 	let world = new Float32Array(16);
 	let view = new Float32Array(16);
