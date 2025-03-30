@@ -5,6 +5,14 @@ precision mediump float;
 in vec3 _pos;
 out vec4 frag;
 
+vec3 sun = vec3(1.0, 0.0, -1.0);
+
+vec3 col = vec3(1.0, 0.0, 0.0);
+
 void main() {
-	frag = vec4(_pos, 1.0);
+	vec3 normFace = normalize(cross(dFdx(_pos), dFdy(_pos)));
+
+	float diff = max(dot(normFace, normalize(sun)), 0.0) * 0.2;
+
+	frag = vec4((1.0 - diff) * col, 1.0);
 }
