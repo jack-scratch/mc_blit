@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 		22, 20, 23
 	];
 
-	const brick = new Obj(vtcBrick, idcCube, "obj", "green", [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [new Obj(vtcStud, idcCube, "obj", "blue", [0, 0.96, 0])]);
+	const brick = new Obj(vtcBrick, idcCube, "obj", "obj", [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [new Obj(vtcStud, idcCube, "obj", "obj", [0, 0.96, 0])]);
 
 	let loop = function () {
 		brick.draw();

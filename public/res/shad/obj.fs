@@ -2,8 +2,9 @@
 
 precision mediump float;
 
+in vec3 _pos;
 out vec4 frag;
 
 void main() {
-	frag = vec4(vec3(0.0, 0.0, 1.0), 1.0);
+	frag = vec4(_pos, 1.0);
 }
