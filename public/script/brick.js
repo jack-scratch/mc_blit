@@ -83,7 +83,23 @@ const idcCube = [
 ];
 
 class Brick extends Obj {
-	constructor(loc, rot) {
+	constructor(loc, rot, col) {
 		super(vtcBrick, idcCube, "obj", "obj", loc, rot, [new Obj(vtcStud, idcCube, "obj", "obj", [0, 0.96, 0])]);
+
+		this.prog.use();
+
+		const uniCol = gl.getUniformLocation(this.prog.id, 'col');
+
+		gl.uniform3fv(uniCol, col);
+
+		this.prog.unUse();
+
+		this._child[0].prog.use();
+
+		const uniColChild = gl.getUniformLocation(this._child[0].prog.id, 'col');
+
+		gl.uniform3fv(uniColChild, col);
+
+		this._child[0].prog.unUse();
 	}
 }

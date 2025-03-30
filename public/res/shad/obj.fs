@@ -5,9 +5,9 @@ precision mediump float;
 in vec3 _pos;
 out vec4 frag;
 
-vec3 sun = vec3(1.0, 0.0, -1.0);
+uniform vec3 col;
 
-vec3 col = vec3(1.0, 0.0, 0.0);
+vec3 sun = vec3(1.0, 0.0, -1.0);
 
 void main() {
 	vec3 normFace = normalize(cross(dFdx(_pos), dFdy(_pos)));
