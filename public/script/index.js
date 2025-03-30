@@ -159,7 +159,8 @@ document.addEventListener("DOMContentLoaded", async function() {
 	let proj = new Float32Array(16);
 	mat4.identity(world);
 	mat4.lookAt(view, [-10, 10, -10], [0, 0, 0], [0, 1, 0]);
-	mat4.perspective(proj, glMatrix.toRadian(45), canvas.clientWidth / canvas.clientHeight, 0.1, 1000.0);
+	const camScale = 10;
+	mat4.ortho(proj, -camScale, camScale, -camScale, camScale, 0.1, 1000.0);
 
 	gl.uniformMatrix4fv(uniWorld, gl.FALSE, world);
 	gl.uniformMatrix4fv(uniView, gl.FALSE, view);
