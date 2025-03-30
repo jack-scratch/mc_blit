@@ -68,12 +68,11 @@ document.addEventListener("DOMContentLoaded", async function() {
 		}
 	}
 
-	let loop = function () {
-		for (let brick of set) {
-			brick.draw();
-		}
+	for (let brick of set) {
+		brick.draw();
+	}
 
-		requestAnimationFrame(loop);
-	};
-	requestAnimationFrame(loop);
+	const link = document.getElementById('link');
+	link.setAttribute('download', 'bildx.png');
+	link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
 });
