@@ -18,10 +18,29 @@ document.addEventListener("DOMContentLoaded", async function() {
 	gl.frontFace(gl.CCW);
 	gl.cullFace(gl.BACK);
 
-	const brick = new Brick([1.0, 0.0, 0.0]);
+	const set = [];
+
+	const strideS = 0.78 * 2;
+	const strideT = 0.96 * 2;
+
+	const red = [1.0, 0.0, 0.0];
+
+	for (let y = 0; y < 3; y++) {
+		set.push(new Brick(red, [0.0, y * strideT, 0.0]));
+
+		for (let x = 1; x < 5; x++) {
+			set.push(new Brick(red, [x * strideS, y * strideT, -x * strideS]));
+		}
+
+		for (let x = -1; x > -5; x--) {
+			set.push(new Brick(red, [x * strideS, y * strideT, -x * strideS]));
+		}
+	}
 
 	let loop = function () {
-		brick.draw();
+		for (let brick of set) {
+			brick.draw();
+		}
 
 		requestAnimationFrame(loop);
 	};
