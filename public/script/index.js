@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 	gl.frontFace(gl.CCW);
 	gl.cullFace(gl.BACK);
 
-	const brick = new Brick([0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [1.0, 0.0, 0.0]);
+	const brick = new Brick([1.0, 0.0, 0.0]);
 
 	let loop = function () {
 		brick.draw();

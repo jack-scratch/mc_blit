@@ -83,7 +83,7 @@ const idcCube = [
 ];
 
 class Brick extends Obj {
-	constructor(loc, rot, col) {
+	constructor(col, loc = [0.0, 0.0, 0.0], rot = [0.0, 0.0, 0.0]) {
 		super(vtcBrick, idcCube, "obj", "obj", loc, rot, [new Obj(vtcStud, idcCube, "obj", "obj", [0, 0.96, 0])]);
 
 		this.prog.use();
