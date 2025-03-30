@@ -33,11 +33,11 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 		set.push(new Brick(red, [y * strideS, locY, 0.0]));
 
-		for (let x = 1; x < 5; x++) {
+		for (let x = 1; x < 7; x++) {
 			set.push(new Brick(red, [(x * strideS) + (y * strideS), locY, -x * strideS]));
 		}
 
-		for (let x = -1; x > -5; x--) {
+		for (let x = -1; x > -7; x--) {
 			set.push(new Brick(red, [(x * strideS) + (y * strideS), locY, -x * strideS]));
 		}
 	}
