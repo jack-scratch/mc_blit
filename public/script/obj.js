@@ -9,7 +9,11 @@ class Obj {
 
 	prog;
 
-	constructor(vtc, idc, nameVtx, nameFrag, loc = [0.0, 0.0, 0.0], rot = [0.0, 0.0, 0.0]) {
+	_child;
+
+	constructor(vtc, idc, nameVtx, nameFrag, loc = [0.0, 0.0, 0.0], rot = [0.0, 0.0, 0.0], child = []) {
+		this._child = child;
+
 		this._mesh = new Mesh(vtc, idc);
 
 		this.prog = new Prog(nameVtx, nameFrag);
@@ -64,5 +68,9 @@ class Obj {
 
 		this.prog.unUse();
 		gl.bindVertexArray(null);
+
+		for (let child of this._child) {
+			child.draw();
+		}
 	}
 }
