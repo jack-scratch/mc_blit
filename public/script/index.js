@@ -170,14 +170,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 	let identityMatrix = new Float32Array(16);
 	mat4.identity(identityMatrix);
-	let angle = 0;
 	let loop = function () {
-		angle = performance.now() / 1000 / 6 * 2 * Math.PI;
-		mat4.rotate(yRotationMatrix, identityMatrix, angle, [0, 1, 0]);
-		mat4.rotate(xRotationMatrix, identityMatrix, angle / 4, [1, 0, 0]);
-		mat4.mul(world, yRotationMatrix, xRotationMatrix);
-		gl.uniformMatrix4fv(uniWorld, gl.FALSE, world);
-
 		gl.drawElements(gl.TRIANGLES, idc.length, gl.UNSIGNED_SHORT, 0);
 
 		requestAnimationFrame(loop);
