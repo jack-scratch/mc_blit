@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 	gl.frontFace(gl.CCW);
 	gl.cullFace(gl.BACK);
 
-	const set = [];
+	let set = [];
 
 	const strideS = brickLn * 2;
 	const strideT = brickHt * 2;
