@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 	const set = [];
 
-	const strideS = 0.78 * 2;
-	const strideT = 0.96 * 2;
+	const strideS = brickLn * 2;
+	const strideT = brickHt * 2;
 
 	const red = [1.0, 0.0, 0.0];
 

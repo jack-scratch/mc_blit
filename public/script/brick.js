@@ -1,33 +1,36 @@
+const brickLn = 0.78;
+const brickHt = 0.96;
+
 const vtcBrick = [
-	-0.78, 0.96, -0.78,
-	-0.78, 0.96, 0.78,
-	0.78, 0.96, 0.78,
-	0.78, 0.96, -0.78,
+	-brickLn, brickHt, -brickLn,
+	-brickLn, brickHt, brickLn,
+	brickLn, brickHt, brickLn,
+	brickLn, brickHt, -brickLn,
 
-	-0.78, 0.96, 0.78,
-	-0.78, -0.96, 0.78,
-	-0.78, -0.96, -0.78,
-	-0.78, 0.96, -0.78,
+	-brickLn, brickHt, brickLn,
+	-brickLn, -brickHt, brickLn,
+	-brickLn, -brickHt, -brickLn,
+	-brickLn, brickHt, -brickLn,
 
-	0.78, 0.96, 0.78,
-	0.78, -0.96, 0.78,
-	0.78, -0.96, -0.78,
-	0.78, 0.96, -0.78,
+	brickLn, brickHt, brickLn,
+	brickLn, -brickHt, brickLn,
+	brickLn, -brickHt, -brickLn,
+	brickLn, brickHt, -brickLn,
 
-	0.78, 0.96, 0.78,
-	0.78, -0.96, 0.78,
-	-0.78, -0.96, 0.78,
-	-0.78, 0.96, 0.78,
+	brickLn, brickHt, brickLn,
+	brickLn, -brickHt, brickLn,
+	-brickLn, -brickHt, brickLn,
+	-brickLn, brickHt, brickLn,
 
-	0.78, 0.96, -0.78,
-	0.78, -0.96, -0.78,
-	-0.78, -0.96, -0.78,
-	-0.78, 0.96, -0.78,
+	brickLn, brickHt, -brickLn,
+	brickLn, -brickHt, -brickLn,
+	-brickLn, -brickHt, -brickLn,
+	-brickLn, brickHt, -brickLn,
 
-	-0.78, -0.96, -0.78,
-	-0.78, -0.96, 0.78,
-	0.78, -0.96, 0.78,
-	0.78, -0.96, -0.78
+	-brickLn, -brickHt, -brickLn,
+	-brickLn, -brickHt, brickLn,
+	brickLn, -brickHt, brickLn,
+	brickLn, -brickHt, -brickLn
 ];
 
 const vtcStud = [
@@ -84,7 +87,7 @@ const idcCube = [
 
 class Brick extends Obj {
 	constructor(col, loc = [0.0, 0.0, 0.0], rot = [0.0, 0.0, 0.0]) {
-		super(vtcBrick, idcCube, "obj", "obj", loc, rot, [new Obj(vtcStud, idcCube, "obj", "obj", [0, 0.96, 0])]);
+		super(vtcBrick, idcCube, "obj", "obj", loc, rot, [new Obj(vtcStud, idcCube, "obj", "obj", [0, brickHt, 0])]);
 
 		this.prog.use();
 
