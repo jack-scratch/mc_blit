@@ -26,14 +26,16 @@ document.addEventListener("DOMContentLoaded", async function() {
 	const red = [1.0, 0.0, 0.0];
 
 	for (let y = 0; y < 3; y++) {
-		set.push(new Brick(red, [y * strideS, y * strideT, 0.0]));
+		const locY = y * strideT;
+
+		set.push(new Brick(red, [y * strideS, locY, 0.0]));
 
 		for (let x = 1; x < 5; x++) {
-			set.push(new Brick(red, [(x * strideS) + (y * strideS), y * strideT, -x * strideS]));
+			set.push(new Brick(red, [(x * strideS) + (y * strideS), locY, -x * strideS]));
 		}
 
 		for (let x = -1; x > -5; x--) {
-			set.push(new Brick(red, [(x * strideS) + (y * strideS), y * strideT, -x * strideS]));
+			set.push(new Brick(red, [(x * strideS) + (y * strideS), locY, -x * strideS]));
 		}
 	}
 
