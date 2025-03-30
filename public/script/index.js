@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", async function() {
 	window.canvas = document.getElementById('disp');
 
+	canvas.width = wd;
+	canvas.height = ht;
+
 	window.gl = canvas.getContext('webgl2');
 
 	if (!gl) {
