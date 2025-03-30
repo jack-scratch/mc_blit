@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 	gl.frontFace(gl.CCW);
 	gl.cullFace(gl.BACK);
 
-	const vtc = [
+	const vtcBrick = [
 		-0.78, 0.96, -0.78,
 		-0.78, 0.96, 0.78,
 		0.78, 0.96, 0.78,
@@ -50,7 +50,39 @@ document.addEventListener("DOMContentLoaded", async function() {
 		0.78, -0.96, -0.78
 	];
 
-	const idc = [
+	const vtcStud = [
+		-0.4, 0.2 * 2, -0.4,
+		-0.4, 0.2 * 2, 0.4,
+		0.4, 0.2 * 2, 0.4,
+		0.4, 0.2 * 2, -0.4,
+
+		-0.4, 0.2 * 2, 0.4,
+		-0.4, 0.0, 0.4,
+		-0.4, 0.0, -0.4,
+		-0.4, 0.2 * 2, -0.4,
+
+		0.4, 0.2 * 2, 0.4,
+		0.4, 0.0, 0.4,
+		0.4, 0.0, -0.4,
+		0.4, 0.2 * 2, -0.4,
+
+		0.4, 0.2 * 2, 0.4,
+		0.4, 0.0, 0.4,
+		-0.4, 0.0, 0.4,
+		-0.4, 0.2 * 2, 0.4,
+
+		0.4, 0.2 * 2, -0.4,
+		0.4, 0.0, -0.4,
+		-0.4, 0.0, -0.4,
+		-0.4, 0.2 * 2, -0.4,
+
+		-0.4, 0.0, -0.4,
+		-0.4, 0.0, 0.4,
+		0.4, 0.0, 0.4,
+		0.4, 0.0, -0.4
+	];
+
+	const idcCube = [
 		0, 1, 2,
 		0, 2, 3,
 
@@ -70,10 +102,13 @@ document.addEventListener("DOMContentLoaded", async function() {
 		22, 20, 23
 	];
 
-	const brick = new Obj(vtc, idc, "obj", "green");
+	const brick = new Obj(vtcBrick, idcCube, "obj", "green");
+
+	const stud = new Obj(vtcStud, idcCube, "obj", "blue", [0, 0.96, 0]);
 
 	let loop = function () {
 		brick.draw();
+		stud.draw();
 
 		requestAnimationFrame(loop);
 	};
