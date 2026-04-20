@@ -54,8 +54,8 @@ const idcCube = [
 ];
 
 class Block extends Obj {
-	constructor(loc = [0, 0, 0], rot = [0, 0, 0]) {
-		super(vtcBlock, idcCube, "obj", "obj", loc, rot);
+	constructor(loc = [0, 0, 0]) {
+		super(vtcBlock, idcCube, "obj", "obj", loc);
 
 		this.prog.use();
 
