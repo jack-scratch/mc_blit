@@ -21,11 +21,16 @@ document.addEventListener("DOMContentLoaded", async function() {
 	gl.frontFace(gl.CCW);
 	gl.cullFace(gl.BACK);
 
-	let scn = [];
+	const shrub = [
+		new Block([0, 0, 0]),
+		new Block([1, 0, 0]),
+		new Block([2, 0, 0]),
+		new Block([0, 1, 0]),
+		new Block([1, 1, 0]),
+		new Block([2, 1, 0])
+	];
 
-	scn.push(new Block([0, 0, 0]));
-
-	for (let block of scn) {
+	for (let block of shrub) {
 		block.draw();
 	}
 
