@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 	const grn = [0.0, 1.0, 0.0];
 
-	scn.push(new Block(grn, [0.0, 0.0, 0.0]));
+	scn.push(new Block(grn, [0, 0, 0]));
 
 	for (let block of scn) {
 		block.draw();
