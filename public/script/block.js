@@ -87,7 +87,7 @@ const idcCube = [
 
 class Block extends Obj {
 	constructor(col, loc = [0.0, 0.0, 0.0], rot = [0.0, 0.0, 0.0]) {
-		super(vtcBlock, idcCube, "obj", "obj", loc, rot, [new Obj(vtcStud, idcCube, "obj", "obj", [0, blockHt, 0])]);
+		super(vtcBlock, idcCube, "obj", "obj", loc, rot);
 
 		this.prog.use();
 
@@ -96,13 +96,5 @@ class Block extends Obj {
 		gl.uniform3fv(uniCol, col);
 
 		this.prog.unUse();
-
-		this._child[0].prog.use();
-
-		const uniColChild = gl.getUniformLocation(this._child[0].prog.id, 'col');
-
-		gl.uniform3fv(uniColChild, col);
-
-		this._child[0].prog.unUse();
 	}
 }
