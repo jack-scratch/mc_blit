@@ -23,14 +23,9 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 	let set = [];
 
-	const strideS = brickLn * 2;
-	const strideT = brickHt * 2;
-
 	const grn = [0.0, 1.0, 0.0];
 
-	const locY = 0.0;
-
-	set.push(new Brick(grn, [0.0, locY, 0.0]));
+	set.push(new Brick(grn, [0.0, 0.0, 0.0]));
 
 	for (let brick of set) {
 		brick.draw();
