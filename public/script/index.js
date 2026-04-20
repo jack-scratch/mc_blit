@@ -73,6 +73,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 	}
 
 	const link = document.getElementById('link');
-	link.setAttribute('download', 'bildx.png');
+	link.setAttribute('download', 'mc_blit.png');
 	link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
 });
