@@ -86,14 +86,14 @@ const idcCube = [
 ];
 
 class Block extends Obj {
-	constructor(col, loc = [0.0, 0.0, 0.0], rot = [0.0, 0.0, 0.0]) {
+	constructor(loc = [0.0, 0.0, 0.0], rot = [0.0, 0.0, 0.0]) {
 		super(vtcBlock, idcCube, "obj", "obj", loc, rot);
 
 		this.prog.use();
 
 		const uniCol = gl.getUniformLocation(this.prog.id, 'col');
 
-		gl.uniform3fv(uniCol, col);
+		gl.uniform3fv(uniCol, [0, 1, 0]);
 
 		this.prog.unUse();
 	}
