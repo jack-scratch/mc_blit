@@ -1,5 +1,5 @@
-const brickLn = 0.78;
-const brickHt = 0.96;
+const brickLn = 1;
+const brickHt = 1;
 
 const vtcBrick = [
 	-brickLn, brickHt, -brickLn,
