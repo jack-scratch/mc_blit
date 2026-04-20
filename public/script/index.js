@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 	const grn = [0.0, 1.0, 0.0];
 
-	set.push(new Brick(grn, [0.0, 0.0, 0.0]));
+	set.push(new Block(grn, [0.0, 0.0, 0.0]));
 
-	for (let brick of set) {
-		brick.draw();
+	for (let block of set) {
+		block.draw();
 	}
 
 	const link = document.getElementById('link');

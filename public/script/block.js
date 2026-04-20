@@ -1,36 +1,36 @@
-const brickLn = 1;
-const brickHt = 1;
+const blockLn = 1;
+const blockHt = 1;
 
-const vtcBrick = [
-	-brickLn, brickHt, -brickLn,
-	-brickLn, brickHt, brickLn,
-	brickLn, brickHt, brickLn,
-	brickLn, brickHt, -brickLn,
+const vtcBlock = [
+	-blockLn, blockHt, -blockLn,
+	-blockLn, blockHt, blockLn,
+	blockLn, blockHt, blockLn,
+	blockLn, blockHt, -blockLn,
 
-	-brickLn, brickHt, brickLn,
-	-brickLn, -brickHt, brickLn,
-	-brickLn, -brickHt, -brickLn,
-	-brickLn, brickHt, -brickLn,
+	-blockLn, blockHt, blockLn,
+	-blockLn, -blockHt, blockLn,
+	-blockLn, -blockHt, -blockLn,
+	-blockLn, blockHt, -blockLn,
 
-	brickLn, brickHt, brickLn,
-	brickLn, -brickHt, brickLn,
-	brickLn, -brickHt, -brickLn,
-	brickLn, brickHt, -brickLn,
+	blockLn, blockHt, blockLn,
+	blockLn, -blockHt, blockLn,
+	blockLn, -blockHt, -blockLn,
+	blockLn, blockHt, -blockLn,
 
-	brickLn, brickHt, brickLn,
-	brickLn, -brickHt, brickLn,
-	-brickLn, -brickHt, brickLn,
-	-brickLn, brickHt, brickLn,
+	blockLn, blockHt, blockLn,
+	blockLn, -blockHt, blockLn,
+	-blockLn, -blockHt, blockLn,
+	-blockLn, blockHt, blockLn,
 
-	brickLn, brickHt, -brickLn,
-	brickLn, -brickHt, -brickLn,
-	-brickLn, -brickHt, -brickLn,
-	-brickLn, brickHt, -brickLn,
+	blockLn, blockHt, -blockLn,
+	blockLn, -blockHt, -blockLn,
+	-blockLn, -blockHt, -blockLn,
+	-blockLn, blockHt, -blockLn,
 
-	-brickLn, -brickHt, -brickLn,
-	-brickLn, -brickHt, brickLn,
-	brickLn, -brickHt, brickLn,
-	brickLn, -brickHt, -brickLn
+	-blockLn, -blockHt, -blockLn,
+	-blockLn, -blockHt, blockLn,
+	blockLn, -blockHt, blockLn,
+	blockLn, -blockHt, -blockLn
 ];
 
 const vtcStud = [
@@ -85,9 +85,9 @@ const idcCube = [
 	22, 20, 23
 ];
 
-class Brick extends Obj {
+class Block extends Obj {
 	constructor(col, loc = [0.0, 0.0, 0.0], rot = [0.0, 0.0, 0.0]) {
-		super(vtcBrick, idcCube, "obj", "obj", loc, rot, [new Obj(vtcStud, idcCube, "obj", "obj", [0, brickHt, 0])]);
+		super(vtcBlock, idcCube, "obj", "obj", loc, rot, [new Obj(vtcStud, idcCube, "obj", "obj", [0, blockHt, 0])]);
 
 		this.prog.use();
 
